@@ -110,9 +110,9 @@ namespace SkypeAds
                 // Only get files that begin with the "live"
                 string[] dirs = Directory.GetDirectories(path, "live*");
                 foreach (string dir in dirs)
-                {
-                    //Add or edit line for xml config file to hide panels for ads
+                {                  
                     File.SetAttributes(Path.Combine(dir, @"config.xml"), ~FileAttributes.ReadOnly);
+                    //Add or edit line for xml config file to hide panels of ads
                     var xmlDoc = XDocument.Load(Path.Combine(dir, @"config.xml"));
                     string[] options = {"AdvertPlaceholder", "AdvertEastRailsEnabled"};
                     foreach (string option in options)
@@ -132,6 +132,7 @@ namespace SkypeAds
                         }
                     }
                     xmlDoc.Save(Path.Combine(dir, @"config.xml"));
+                    //Set the xml config file attributes to readonly to prevent changes
                     File.SetAttributes(Path.Combine(dir, @"config.xml"), FileAttributes.ReadOnly);
                 }
             }
