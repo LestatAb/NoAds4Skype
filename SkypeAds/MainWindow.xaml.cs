@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace SkypeAds
@@ -28,7 +27,6 @@ namespace SkypeAds
         {
             AddToHosts();
             ChangeConfigFile();
-            setReadOnly();
             lblMensaje.Visibility = Visibility.Visible;
             btnAplicar.IsEnabled = false;
         }
@@ -138,11 +136,6 @@ namespace SkypeAds
                     File.SetAttributes(Path.Combine(dir, @"config.xml"), FileAttributes.ReadOnly);
                 }
             }
-        }
-
-        private void setReadOnly()
-        {
-
         }
     }
 }
